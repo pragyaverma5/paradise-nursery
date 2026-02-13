@@ -1,10 +1,7 @@
 import Navbar from "./Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  increaseQty,
-  decreaseQty,
-  removeFromCart,
-} from "../redux/CartSlice";
+import { updateQuantity, removeItem }
+from "../redux/CartSlice";
 import { Link } from "react-router-dom";
 import "./CartItem.css";
 
@@ -37,18 +34,18 @@ function CartItem() {
                 <p>Total: ${item.price * item.quantity}</p>
 
                 <div className="qty-buttons">
-                  <button onClick={() => dispatch(decreaseQty(item.id))}>
+                  <button onClick={() => dispatch(updateQuantity({ id: item.id, amount: -1 }))}>
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button onClick={() => dispatch(increaseQty(item.id))}>
+                  <button onClick={() => dispatch(updateQuantity({ id: item.id, amount: 1 }))}>
                     +
                   </button>
                 </div>
 
                 <button
                   className="delete-btn"
-                  onClick={() => dispatch(removeFromCart(item.id))}
+                  onClick={() => dispatch(removeItem(item.id))}
                 >
                   Delete
                 </button>

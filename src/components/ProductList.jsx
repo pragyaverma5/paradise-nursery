@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/CartSlice";
+import { addItem } from "../redux/CartSlice";
 import "./ProductList.css";
 
 function ProductList() {
@@ -48,7 +48,7 @@ function ProductList() {
                 <h3>{plant.name}</h3>
                 <p>${plant.price}</p>
 
-                <button onClick={() => dispatch(addToCart(plant))}>
+                <button onClick={() => dispatch(addItem(plant))}>
                   Add to Cart
                 </button>
               </div>
